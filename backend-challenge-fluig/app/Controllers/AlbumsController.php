@@ -52,9 +52,10 @@ class AlbumsController extends BaseController
             $result->message = 'Album creado correctamente';
             // Devuelve el estado y el mensaje
             return $this->response->setJSON(json_encode($result))->setStatusCode(200);
-        }catch(\Exception $e){
-            // Devuelve el estado y el mensaje
-            return $this->response->setJSON(['state'=>'NOOK','message'=>$e->message])->setStatusCode(403);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->response->setJSON(['state' => 'NOOK', 'message' => 'Error en la base de datos, '.$e->getMessage()])->setStatusCode(500);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['state' => 'NOOK', 'message' => 'Ocurrió un error, '.$e->getMessage()])->setStatusCode(500);
         }
     }
     public function buscarAlbums()
@@ -75,9 +76,10 @@ class AlbumsController extends BaseController
             $result->datos = $albums;
             // Devuelve el estado y los álbumes encontrados como datos
             return $this->response->setJSON(json_encode($result))->setStatusCode(200);
-        }catch(\Exception $e){
-            // Devuelve el estado y el mensaje
-            return $this->response->setJSON(['state'=>'NOOK','message'=>$e->message])->setStatusCode(403);
+        } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
+            return $this->response->setJSON(['state' => 'NOOK', 'message' => 'Error en la base de datos, '.$e->getMessage()])->setStatusCode(500);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['state' => 'NOOK', 'message' => 'Ocurrió un error, '.$e->getMessage()])->setStatusCode(500);
         }
     }
 }
