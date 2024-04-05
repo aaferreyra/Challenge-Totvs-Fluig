@@ -24,16 +24,15 @@ class AlbumsController extends BaseController
             $DatosUsuario = [
                 'id' => $postData['id_usuario'],
                 'd_nombre' => $postData['d_nombre_us'],
-                'f_alta' => $postData['f_alta_us']
+                'f_alta' => $postData['f_alta']
             ];
             $DatosAlbum = [
-                'id' => $postData['id_album'],
                 'id_usuario' => $postData['id_usuario'],
                 'd_nombre' => $postData['d_nombre_al'],
                 'd_artista' => $postData['d_artista'],
                 'd_color' => $postData['d_color'],
                 'd_estado' => $postData['d_estado'],
-                'f_alta' => $postData['f_alta_al']
+                'f_alta' => $postData['f_alta']
             ];
             // Crear una instancia del modelo de usuario
             $usuarioModel = new UsuariosModel();
@@ -68,8 +67,10 @@ class AlbumsController extends BaseController
             $AlbumsModel = new AlbumsModel();
 
             // Filtra los álbumes por id_usuario
-            $albums = $AlbumsModel->where('id_usuario', $id_usuario)->findAll();
-
+            $albums = $AlbumsModel->select('id, d_nombre, d_artista, d_color')
+                                    ->where('id_usuario', $id_usuario)
+                                    ->where('d_estado', 'Aprobado')
+                                    ->findAll();
             // Guarda el estado y los datos
             $result->state = 'OK';
             $result->datos = array();
