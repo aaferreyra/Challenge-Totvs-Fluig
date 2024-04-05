@@ -4,8 +4,9 @@
 ## Instrucciones de uso:
 1. Clonar el repositorio.
 2. Instalar Composer: https://getcomposer.org/download/
-3. Iniciar un servidor web con el comando php spark serve --port 8012
-4. Acceder a la aplicación en el navegador: localhost:8012 
+3. Ejecutar **composer install** en la carpeta app/.
+4. Iniciar un servidor web con el comando **php spark serve --port 8012** desde backend-challenge-fluig/.
+5. Acceder a la aplicación en el navegador: **localhost:8012** 
 
 ## Funcionalidades:
 
