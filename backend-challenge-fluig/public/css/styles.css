@@ -1,0 +1,49 @@
+#header {
+    background-color: rgba(49,30,57,0.3) !important;
+}
+#body {
+    background: rgba(71, 51, 79,0.9) !important; 
+    padding: 20px !important;
+}
+#altaAlbumes {
+    margin-bottom: 10px !important;
+}
+#lista_albumes { 
+    display: flex; gap: 10px; 
+    max-height: 48vh; 
+    overflow-y: auto; 
+    padding-right: calc(var(--bs-gutter-x) * .2); 
+    padding-left: calc(var(--bs-gutter-x) * .2);
+}
+/* Estilos para los enlaces del menú */
+.nav-link {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+/* Estilos para los enlaces activos */
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #311e39 !important; 
+    color: white !important;
+}
+
+/* Estilos para la tarjeta y el botón en la cabecera */
+.card-header, .btn {
+background-color: #311e39 !important; 
+color: white !important;
+}
+
+/* Estilos para eliminar el borde de las tarjetas y los botones */
+.card, .btn {
+border-width: 0 !important;
+}
+
+/* Estilos para el footer */
+#footer {
+    background-color: rgba(0,0,0,0.7) !important;
+    color: white !important;
+}
+#mail {
+    color: inherit !important; 
+    text-decoration: none !important;
+}

@@ -44,11 +44,21 @@ class AlbumsController extends BaseController
             }
             // Crear una instancia del modelo de álbum
             $albumModel = new AlbumsModel();
-            // Guarda el nuevo album
-            $albumModel->insert($DatosAlbum);
-            // Guarda el estado y mensaje
-            $result->state = 'OK';
-            $result->message = 'Album creado correctamente';
+            // Busca si ya existe por id el usuario, artista, y nombre
+            $album = $albumModel->where('id_usuario', $postData['id_usuario'])
+            ->where('d_nombre', $postData['d_nombre_al'])
+            ->where('d_artista', $postData['d_artista'])->findAll();
+            // Guarda el nuevo album solo si no existe
+            if (empty($album)) {
+                $albumModel->insert($DatosAlbum);
+                // Guarda el estado y mensaje
+                $result->state = 'OK';
+                $result->message = 'Album creado correctamente.';
+            }else{
+                // Guarda el estado y mensaje
+                $result->state = 'NOOK';
+                $result->message = 'El álbum ya existe para este usuario. Por favor, intenta cargar otro álbum.';
+            }
             // Devuelve el estado y el mensaje
             return $this->response->setJSON(json_encode($result))->setStatusCode(200);
         } catch (\CodeIgniter\Database\Exceptions\DatabaseException $e) {
