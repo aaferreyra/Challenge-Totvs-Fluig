@@ -89,7 +89,7 @@ function init_eventos(){
             $("#lista_albumes").empty();
             //realiza un carga de los datos devueltos de la peticion
             $.each(data.datos, function(index, album) {
-                var card = $("<div>", {class: "card col-md-2", style: "padding: 5px; padding-left: 10px; margin: auto; width: 10rem; height: 10rem; background-color: " + album.d_color});
+                var card = $("<div>", {class: "card col-md-2", style: "padding: 5px; padding-left: 10px; width: 10rem; height: 10rem; background-color: " + album.d_color});
                 card.append($("<h4>", {class: "card-title", text: album.d_nombre, style: "color: white;"}));
                 card.append($("<h6>", {class: "card-subtitle mb-2 text-body-secondary", style: "color: white !important;", text: album.d_artista}));
                 var heartIcon = $("<i>", {class: "bi bi-heart-fill", style: "font-size: 1.2rem; position: absolute; bottom: 15px; left: 20px; color: white;"});
